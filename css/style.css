@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    background-color: black;
+    place-items: center;
+}
+
+canvas {
+    height: 100vh;
+    background: url('/imgs/backdrop2.png') center / cover no-repeat;
+}
