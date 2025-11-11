@@ -9,6 +9,6 @@ body {
 }
 
 canvas {
-    height: 100vh;
+    height: 90vh;
     background: url('/imgs/backdrop2.png') center / cover no-repeat;
 }

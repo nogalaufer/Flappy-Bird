@@ -1,62 +1,51 @@
 'use strict'
+const { init, GameLoop, Sprite, keyPressed, initKeys } = kontra;
 
-const canvas = document.getElementById('gameCanvas')
-const ctx = canvas.getContext('2d')
-const size = 10
-var birdLoc
+const { canvas } = init()
+var birdImg = new Image();
+birdImg.src = '../imgs/birdUp.png'
 
+
+const birdWidth = canvas.width * 0.1;   // 10% מרוחב הקנבס
+const birdHeight = canvas.height * 0.1;
 
 function onInit() {
-  drawGrid()
-  createBird()
+  initKeys()
+keysListener()
 
 }
 
-function drawGrid() {
-  ctx.strokeStyle = '#ccc'
-  ctx.lineWidth = 0.5
+const bird = Sprite({
 
-  // קווים אנכיים
-  for (let x = 0; x <= canvas.width; x += size) {
-    ctx.beginPath()
-    ctx.moveTo(x, 0)
-    ctx.lineTo(x, canvas.height)
-    ctx.stroke()
-  }
 
-  // קווים אופקיים
-  for (let y = 0; y <= canvas.height; y += size) {
-    ctx.beginPath()
-    ctx.moveTo(0, y)
-    ctx.lineTo(canvas.width, y)
-    ctx.stroke()
-  }
-}
-const bird = new Image()
+  x: canvas.width / 3,
+  y: canvas.height / 3,
 
-function createBird() {
-  bird.src = './imgs/birdUp.png'
-  console.log(bird.height)
-  console.log(bird.width)
+  image: birdImg,
+  scaleX: 0.1,
+  scaleY: 0.1,
 
-  bird.onload = () => {
-    birdLoc = ctx.drawImage(bird, canvas.width / 3, canvas.height / 2, 100, 100)
-  }
+  dy: 0,
+  
+  update() {
+      // keysListener()
+      if ( keyPressed('space')) {
+        jump()
+    }
+    /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
+    dy<0 (the bird is moving upward) → the angle is negative → the bird tilts upward.*/
+    this.rotation = Math.atan2(this.dy, 11);
+    this.dy += 0.3;
+    this.y += this.dy;
 
-}
-
-function move() {
-  console.log(ctx)
-  if (bird) {
-    // ctx.rotate(3)
-    // ctx.clearRect(0, 0, canvas.width, canvas.height)
-    drawGrid()
-    ctx.drawImage(bird, canvas.width / 3, canvas.height / 2 - 10, 100, 100)
-    ctx.save()
-    // ctx.translate(0,  canvas.height / 2-5)
-    // ctx.drawImage(bird, -width / 2, -height / 2, width, height)
-    // ctx.restore()
 
   }
-  else console.log("ni")
-}
+
+});
+
+const loop = GameLoop({
+  update: () => bird.update(),
+  render: () => bird.render()
+});
+
+loop.start();
