@@ -28,8 +28,7 @@ const bird = Sprite({
   dy: 0,
   
   update() {
-      // keysListener()
-      if ( keyPressed('space')) {
+      if (keyPressed('space')) {
         jump()
     }
     /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
