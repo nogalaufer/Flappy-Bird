@@ -1,20 +1,17 @@
 'use strict'
+const { init, GameLoop, Sprite, keyPressed, initKeys,collides } = kontra;
+const { canvas } = init()
 
-let prevPress = false
-let isDown = false
+let isKeyDown = false
 const jumpDelay = 150
+let isGameOn= true
 
-const jump = throttle(() => {
-        if (isDown) return
-        isDown = true
-        bird.dy = -5.5;
-}, jumpDelay)
 
 function keysListener() {
     window.addEventListener('keyup', e => {
         if (e.code === 'Space') {
-            isDown=false
+            isKeyDown = false
         }
     })
 }
- 
+
