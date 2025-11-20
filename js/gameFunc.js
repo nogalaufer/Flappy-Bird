@@ -1,10 +1,11 @@
 'use strict'
-const { init, GameLoop, Sprite, keyPressed, initKeys,collides } = kontra;
+const { init, GameLoop, Sprite, keyPressed, initKeys, collides, Text,SpriteSheet } = kontra;
 const { canvas } = init()
 
 let isKeyDown = false
 const jumpDelay = 150
-let isGameOn= true
+let isGameOn = true
+let gScore = 0
 
 
 function keysListener() {

@@ -4,9 +4,9 @@ var birdImg = new Image();
 birdImg.src = '../imgs/birdUp.png'
 
 const jump = throttle(() => {
-    if (isKeyDown) return
-    isKeyDown = true
-    bird.dy = -5.5;
+  if (isKeyDown) return
+  isKeyDown = true
+  bird.dy = -5.5;
 }, jumpDelay)
 
 
@@ -23,14 +23,21 @@ const bird = Sprite({
   update() {
     if (keyPressed('space')) {
       jump()
-    }  
-    if (collides(pipe, this)) {
-      isGameOn = false
-      this.y = y;
-      pipe.x = pipe.x
-      return
     }
- 
+    pipes.forEach(pipe => {
+      if (!pipe.scored && pipe.x - this.x < 0) {
+        gScore++
+        pipe.scored = true
+
+      }
+      if (collides(pipe, this)) {
+        isGameOn = false
+        this.y = y;
+        pipes.x = pipes.x
+        return
+      }
+    })
+
     /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
     dy<0 (the bird is moving upward) → the angle is negative → the bird tilts upward.*/
     this.rotation = Math.atan2(this.dy, 11);
