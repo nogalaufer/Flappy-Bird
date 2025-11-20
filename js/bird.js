@@ -30,7 +30,8 @@ const bird = Sprite({
         pipe.scored = true
 
       }
-      if (collides(pipe, this)) {
+      if (collides(pipe, this) || collides(logicGround, this)) {
+      console.log('game over')
         isGameOn = false
         this.y = y;
         pipes.x = pipes.x
