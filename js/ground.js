@@ -2,7 +2,7 @@
 let groundImg = new Image();
 groundImg.src = './imgs/ground.frames3.png';
 
-const bottomGreenLimit = SpriteSheet({
+const groundAmination = SpriteSheet({
     image: groundImg,
     frameWidth: 566,
     frameHeight: 163,
@@ -24,7 +24,7 @@ const ground = Sprite({
     y: 484,
     scaleX: canvas.width / 566,
     scaleY: 0.8,
-    animations: bottomGreenLimit.animations
+    animations: groundAmination.animations
 })
 const logicGround = Sprite({
     x: 0,

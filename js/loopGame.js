@@ -9,12 +9,10 @@ function onInit() {
 function onGameOver() {
       console.log('game over')
       isGameOn = false
-      bird.y = bird.y;
+      ground.groundAmination.stop()
+      bird.dy = bird.dy;
       pipes.forEach(pipe => {
-            pipe.dx = 0, pipe.dy = 0
-
-      })
-      ground.bottomGreenLimit.stop()
+            pipe.dx = 0, pipe.dy = 0})
       return
 }
 
@@ -31,8 +29,6 @@ const loop = GameLoop({
             bird.update()
             textScore.update()
             pipes.forEach(pipe => pipe.update())
-            logicGround.update()
-
             ground.update()
 
 
@@ -42,7 +38,6 @@ const loop = GameLoop({
             pipes.forEach(pipe => pipe.render());
             textScore.render()
             bird.render()
-            logicGround.render()
             ground.render()
       }
 });
