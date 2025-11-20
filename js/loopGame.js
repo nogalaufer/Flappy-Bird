@@ -6,7 +6,17 @@ function onInit() {
       keysListener()
 
 }
+function onGameOver() {
+      console.log('game over')
+      isGameOn = false
+      bird.y = bird.y;
+      pipes.forEach(pipe => {
+            pipe.dx = 0, pipe.dy = 0
 
+      })
+      ground.bottomGreenLimit.stop()
+      return
+}
 
 
 const loop = GameLoop({

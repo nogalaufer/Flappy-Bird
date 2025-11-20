@@ -24,18 +24,17 @@ const bird = Sprite({
     if (keyPressed('space')) {
       jump()
     }
+    if (collides(logicGround, this)){
+      onGameOver()
+    }
     pipes.forEach(pipe => {
       if (!pipe.scored && pipe.x - this.x < 0) {
         gScore++
         pipe.scored = true
 
       }
-      if (collides(pipe, this) || collides(logicGround, this)) {
-      console.log('game over')
-        isGameOn = false
-        this.y = y;
-        pipes.x = pipes.x
-        return
+      if (collides(pipe, this) ) {
+     onGameOver()
       }
     })
 
