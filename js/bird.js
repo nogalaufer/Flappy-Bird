@@ -52,11 +52,12 @@ const bird = Sprite({
       jump()
     }
     if (circleRectCollision(this, ground)) onGameOver()
-      
+
     pipes.forEach(pipe => {
       if (!pipe.scored && pipe.x - this.x < 0) {
-        gScore++
         pipe.scored = true
+        gScore++
+        
       }
       if (circleRectCollision(this, pipe)) onGameOver()
 
