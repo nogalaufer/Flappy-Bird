@@ -13,7 +13,7 @@ body {
 
 canvas {
     height: 90vh;
-    background: url('/imgs/backdrop2.png') center / cover no-repeat;
+    background: url('./imgs/backdrop2.png') center / cover no-repeat;
 }
 
 
