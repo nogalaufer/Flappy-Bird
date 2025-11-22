@@ -18,7 +18,7 @@ const groundAmination = SpriteSheet({
     animations: {
         scroll: {
             frames: [0, 1, 2,],
-            frameRate: 7,
+            frameRate: 14,
         }
     }
 })
