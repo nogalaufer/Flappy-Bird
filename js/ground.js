@@ -1,6 +1,6 @@
 'use strict'
 let groundImg = new Image();
-groundImg.src = './imgs/ground.frames3.png';
+groundImg.src = '../imgs/ground.frames3.png';
 
 function restartGround() {
     if (ground.currentAnimation) {

@@ -9,22 +9,24 @@
 
     <title>FlappyBird</title>
     <!-- !!!! -->
-<!-- <div class="fade-screen"></div> -->
+    <!-- <div class="fade-screen"></div> -->
+</head>
+
+<body onload="onInit()">
     <div class="start-modal">
         <div class="logo-container">
             <h1>FluppyBird</h1>
-            <img src="/imgs/birdUp.png" alt="">
+            <img src="./imgs/birdUp.png">
         </div>
         <div class="btns-container">
             <!-- <button class="start-btn" onclick="onInit()">start</button> -->
             <button class="start-btn" onclick="onGameStart()">start</button>
         </div>
     </div>
-</head>
-
-<body onload="onInit()">
     <canvas id="gameCanvas" width="400" height="600"></canvas>
-    <script src="./node_modules/kontra/kontra.min.js"></script>
+    <!-- <script src="./node_modules/kontra/kontra.min.js"></script> -->
+    <script src="https://unpkg.com/kontra@latest/kontra.min.js"></script>
+
     <script src="js/util.js"> </script>
     <script src="js/gameFunc.js"> </script>
     <script src="js/gameText.js"> </script>
