@@ -2,41 +2,35 @@
 
 
 function onInit() {
-    isGameOn = false;    // <<< חובה!
-    gScore = 0;
-    initKeys();
-    keysListener();
-    updateStartModal();  // <<< חובה להציג את המסך
+      isGameOn = false;
+      initKeys()
+      keysListener()
+      updateStartModal()
 }
 function onGameStart() {
-    const elFadeScreen = document.querySelector('.fade-screen');
+      const elFadeScreen = document.querySelector('.fade-screen');
+      // if (elFadeScreen) {
+            elFadeScreen.style.opacity = 1
 
-    // אם יש fade-screen → נעשה הבזק
-    if (elFadeScreen) {
-        elFadeScreen.style.opacity = 1;
-
-        setTimeout(() => {
-            elFadeScreen.style.opacity = 0;
-
-            isGameOn = true;
-            updateStartModal();
-
-            ground.playAnimation('scroll');
-            restartGround();
-            restartPipes();
-            restartBird();
-        }, 150);
-    }
-
-    // אם אין fade-screen → פשוט להתחיל
-    else {
-        isGameOn = true;
-        updateStartModal();
-        ground.playAnimation('scroll');
-        restartGround();
-        restartPipes();
-        restartBird();
-    }
+            setTimeout(() => {
+                  elFadeScreen.style.opacity = 0
+                  isGameOn = true
+                  gScore = 0
+                  updateStartModal()
+                  restartGround()
+                  restartPipes()
+                  restartBird()
+                  ground.playAnimation('scroll')
+            }, 150);
+      // }
+      // else {
+      //       isGameOn = true;
+      //       updateStartModal()
+      //       restartGround()
+      //       restartPipes()
+      //       restartBird()
+      //       ground.playAnimation('scroll')
+      // }
 }
 
 function onGameOver() {
@@ -61,13 +55,13 @@ function keysListener() {
 
 const loop = GameLoop({
       update(dt) {
-    updateStartModal();  // <<< חובה
+            updateStartModal()
             if (!isGameOn) return
             pipeTimer += dt
 
             if (pipeTimer >= PIPE_INTERVAL) {
-                  makebottomPipe();
-                  pipeTimer = 0;
+                  makebottomPipe()
+                  pipeTimer = 0
             }
             pipes.forEach(pipe => pipe.update())
             ground.update()
@@ -77,7 +71,7 @@ const loop = GameLoop({
       },
       render: () => {
             if (!isGameOn) return
-            pipes.forEach(pipe => pipe.render());
+            pipes.forEach(pipe => pipe.render())
             ground.render()
             textScore.render()
             bird.render()

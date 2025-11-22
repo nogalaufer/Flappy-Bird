@@ -1,7 +1,7 @@
 'use strict'
 
 var birdImg = new Image();
-birdImg.src = '../imgs/birdUp.png'
+birdImg.src = './imgs/birdUp.png'
 
 
 function restartBird(){

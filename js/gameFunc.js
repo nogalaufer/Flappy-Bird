@@ -8,11 +8,11 @@ let isGameOn = false
 let gScore = 0
 
 function updateStartModal() {
-    const elModal = document.querySelector('.start-modal');
+    const elModal = document.querySelector('.start-modal')
     if (isGameOn) {
-        elModal.classList.add('hidden');
+        elModal.classList.add('hidden')
     } else {
-        elModal.classList.remove('hidden');
+        elModal.classList.remove('hidden')
     }
 }
 
