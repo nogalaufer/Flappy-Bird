@@ -10,17 +10,20 @@ let pipeTimer = PIPE_INTERVAL - 0.5
 let pipes = []
 
 
-// the top of the pipe
+function restartPipes() {
+    pipes.length = 0
+} 
+
 function makebottomPipe() {
     const BOTTOM_PIPE_MAX_Y = 200
-    const BOTTOM_PIPE_MIN_Y  = 420
-    const TOP_PIPE_MAX_Y = -490
+    const BOTTOM_PIPE_MIN_Y = 420
+    const TOP_PIPE_MAX_Y =  -490
     const PIPE_GAP = -190
 
-    const randomHeight = Math.random() * (BOTTOM_PIPE_MAX_Y - BOTTOM_PIPE_MIN_Y )
+    const randomHeight = Math.random() * (BOTTOM_PIPE_MAX_Y - BOTTOM_PIPE_MIN_Y)
 
-    const bottomPipeHoleY = BOTTOM_PIPE_MIN_Y  + randomHeight
-    const topPipeholeY = TOP_PIPE_MAX_Y + bottomPipeHoleY + PIPE_GAP   
+    const bottomPipeHoleY = BOTTOM_PIPE_MIN_Y + randomHeight
+    const topPipeholeY = TOP_PIPE_MAX_Y + bottomPipeHoleY + PIPE_GAP
 
     let topPipe = Sprite({
         x: canvas.width,

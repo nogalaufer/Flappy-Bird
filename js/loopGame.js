@@ -1,11 +1,28 @@
 'use strict'
 
+
 function onInit() {
+      isGameOn = true
+      // updateStartModal()
       gScore = 0
       initKeys()
       keysListener()
       ground.playAnimation('scroll');
+      restartGround()
+      restartPipes()
+      restartBird()
+}
 
+function onGameStart() {
+      // updateStartModal()
+      let elFadeScreen = document.querySelector('.fade-screen')
+      elFadeScreen.style.opacity = 1
+   
+      setTimeout(() => {
+            elFadeScreen.style.opacity = 0;
+            onInit()
+      }, 10);
+   
 }
 
 function onGameOver() {
@@ -14,7 +31,8 @@ function onGameOver() {
       ground.currentAnimation.stop()
       bird.dy = bird.dy;
       pipes.forEach(pipe => {
-            pipe.dx = 0, pipe.dy = 0
+            pipe.dx = 0,
+                  pipe.dy = 0
       })
       return
 }
@@ -29,6 +47,7 @@ function keysListener() {
 
 const loop = GameLoop({
       update(dt) {
+            updateStartModal()
             if (!isGameOn) return
             pipeTimer += dt
 
@@ -36,16 +55,17 @@ const loop = GameLoop({
                   makebottomPipe();
                   pipeTimer = 0;
             }
-            bird.update()
-            ground.update()
-            textScore.update()
             pipes.forEach(pipe => pipe.update())
+            ground.update()
+            bird.update()
+            textScore.update()
 
       },
       render: () => {
+            if (!isGameOn) return
             pipes.forEach(pipe => pipe.render());
-            textScore.render()
             ground.render()
+            textScore.render()
             bird.render()
       }
 });

@@ -2,15 +2,23 @@
 let groundImg = new Image();
 groundImg.src = './imgs/ground.frames3.png';
 
+function restartGround() {
+    if (ground.currentAnimation) {
+        ground.currentAnimation.reset()
+        ground.playAnimation('scroll')
+    }
+}
+
 const groundAmination = SpriteSheet({
     image: groundImg,
     frameWidth: 566,
     frameHeight: 163,
 
+
     animations: {
         scroll: {
             frames: [0, 1, 2,],
-            frameRate: 10
+            frameRate: 7,
         }
     }
 })

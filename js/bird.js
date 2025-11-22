@@ -3,6 +3,14 @@
 var birdImg = new Image();
 birdImg.src = '../imgs/birdUp.png'
 
+
+function restartBird(){
+  bird.x = canvas.width / 3;
+  bird.y = canvas.height / 3;
+  bird.dy = 0;
+  bird.rotation = 0;
+}
+
 const jump = throttle(() => {
   if (isKeyDown) return
   isKeyDown = true
