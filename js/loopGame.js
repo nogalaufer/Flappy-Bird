@@ -10,18 +10,18 @@ function onInit() {
 function onGameStart() {
       const elFadeScreen = document.querySelector('.fade-screen');
       // if (elFadeScreen) {
-            elFadeScreen.style.opacity = 1
+      elFadeScreen.style.opacity = 1
 
-            setTimeout(() => {
-                  elFadeScreen.style.opacity = 0
-                  isGameOn = true
-                  gScore = 0
-                  updateStartModal()
-                  restartGround()
-                  restartPipes()
-                  restartBird()
-                  ground.playAnimation('scroll')
-            }, 150);
+      setTimeout(() => {
+            elFadeScreen.style.opacity = 0
+            isGameOn = true
+            gScore = 0
+            updateStartModal()
+            restartGround()
+            restartPipes()
+            restartBird()
+            ground.playAnimation('scroll')
+      }, 150);
       // }
       // else {
       //       isGameOn = true;
@@ -35,13 +35,18 @@ function onGameStart() {
 
 function onGameOver() {
       console.log('game over')
-      isGameOn = false
       ground.currentAnimation.stop()
-      bird.dy = bird.dy;
       pipes.forEach(pipe => {
             pipe.dx = 0,
                   pipe.dy = 0
       })
+
+      if (bird.y = ground.y) {
+            setTimeout(() => {
+                  isGameOn = false
+                  bird.isFalling = false
+            }, 200)
+      }
       return
 }
 
@@ -60,7 +65,7 @@ const loop = GameLoop({
             pipeTimer += dt
 
             if (pipeTimer >= PIPE_INTERVAL) {
-                  makebottomPipe()
+                  makePipes()
                   pipeTimer = 0
             }
             pipes.forEach(pipe => pipe.update())

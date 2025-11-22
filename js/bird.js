@@ -4,7 +4,7 @@ var birdImg = new Image();
 birdImg.src = './imgs/birdUp.png'
 
 
-function restartBird(){
+function restartBird() {
   bird.x = canvas.width / 3;
   bird.y = canvas.height / 3;
   bird.dy = 0;
@@ -24,14 +24,14 @@ function circleRectCollision(circle, rect) {
   const circleWidth = circle.width * (circle.scaleX || 1);
   const circleHeight = circle.height * (circle.scaleY || 1);
 
-  const radius = (Math.min(circleWidth, circleHeight) / 2) * 1.1  
+  const radius = (Math.min(circleWidth, circleHeight) / 2) * 1.1
 
   const rectWidth = rect.width * (rect.scaleX || 1);
   const rectHeight = rect.height * (rect.scaleY || 1);
 
-  const rectLeft   = rect.x;
-  const rectRight  = rect.x + rectWidth;
-  const rectTop    = rect.y;
+  const rectLeft = rect.x;
+  const rectRight = rect.x + rectWidth;
+  const rectTop = rect.y;
   const rectBottom = rect.y + rectHeight;
 
   const nearestX = Math.max(rectLeft, Math.min(cx, rectRight));
@@ -49,14 +49,14 @@ const bird = Sprite({
   y: canvas.height / 3,
 
   image: birdImg,
-  scaleX: 0.1,
-  scaleY: 0.1,
-    anchor: { x: 0.5, y: 0.5 },
+  scaleX: 0.08,
+  scaleY: 0.08,
+  anchor: { x: 0.5, y: 0.5 },
 
   dy: 0,
 
   update() {
-    if (keyPressed('space')) {
+    if (keyPressed('space') && !this.isFalling) {
       jump()
     }
     if (circleRectCollision(this, ground)) onGameOver()
@@ -65,17 +65,38 @@ const bird = Sprite({
       if (!pipe.scored && pipe.x - this.x < 0) {
         pipe.scored = true
         gScore++
-        
+
       }
-      if (circleRectCollision(this, pipe)) onGameOver()
+      if (circleRectCollision(this, pipe)) {
+        this.isFalling = true
+      }
+      if (this.isFalling) {
+        //  this.dy = 0
+        // setTimeout(()=>{
+          this.dy += 0.2;
+          if (this.y >= ground.y) {
+            this.y = ground.y;
+            this.dy = 0;
+            onGameOver()
+            this.rotation = Math.atan2(0.3, 11);
+          }
+          
+
+        // },300)
+          
+
+      }
 
     })
 
     /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
     dy<0 (the bird is moving upward) → the angle is negative → the bird tilts upward.*/
-    this.rotation = Math.atan2(this.dy, 11);
-    this.dy += 0.3;
-    this.y += this.dy;
+    // if (!this.isFalling){
+      this.rotation = Math.atan2(this.dy, 11);
+      this.dy += 0.3;
+      this.y += this.dy;
+
+    // }
   }
 });
 

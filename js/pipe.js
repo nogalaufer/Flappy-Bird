@@ -14,7 +14,7 @@ function restartPipes() {
     pipes.length = 0
 } 
 
-function makebottomPipe() {
+function makePipes() {
     const BOTTOM_PIPE_MAX_Y = 200
     const BOTTOM_PIPE_MIN_Y = 420
     const TOP_PIPE_MAX_Y =  -490
@@ -36,7 +36,7 @@ function makebottomPipe() {
         dx: -1,
 
         update() {
-            this.x += this.dx;
+            if (isGameOn) this.x += this.dx;
         }
     })
 
