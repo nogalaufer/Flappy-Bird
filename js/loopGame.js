@@ -2,7 +2,6 @@
 
 
 function onInit() {
-      isGameOn = true
       // updateStartModal()
       gScore = 0
       initKeys()
@@ -17,9 +16,10 @@ function onGameStart() {
       // updateStartModal()
       let elFadeScreen = document.querySelector('.fade-screen')
       elFadeScreen.style.opacity = 1
-   
+      
       setTimeout(() => {
             elFadeScreen.style.opacity = 0;
+            isGameOn = true
             onInit()
       }, 10);
    
