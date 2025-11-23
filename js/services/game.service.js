@@ -20,13 +20,9 @@ function query() {
 
 function post(newScore) {
   if (newScore == null) return
-  const currentBest = query()
-  if (newScore > currentBest) {
+  _save(STORAGE_KEY, newScore)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newScore))
     return newScore
-  }
-
-  return currentBest
 }
 
 

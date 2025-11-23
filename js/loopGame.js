@@ -1,6 +1,6 @@
 'use strict'
 
-let bestScore = gameService.query()
+let bestScore = gameService.query() || 0
 
 
 function onInit() {
@@ -38,6 +38,7 @@ function onGameStart() {
 
 function renderSummary() {
       const currScore = gScore / 2
+      console.log(bestScore)
       if (currScore > bestScore) {
             gameService.post(currScore)
             bestScore = currScore
