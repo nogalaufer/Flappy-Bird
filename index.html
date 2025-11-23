@@ -12,15 +12,28 @@
 </head>
 
 <div class="fade-screen"></div>
+
 <body onload="onInit()">
     <div class="start-modal">
         <div class="logo-container">
-            <h1>FlappyBird</h1>
+            <!-- <h1>FlappyBird</h1> -->
+            <h1 class="flappy-logo">
+                <span>F</span>
+                <span>L</span>
+                <span>A</span>
+                <span>P</span>
+                <span>P</span>
+                <span>Y</span>
+                <span>B</span>
+                <span>I</span>
+                <span>R</span>
+                <span>D</span>
+            </h1>
             <img src="./imgs/birdUp.png">
         </div>
-        <div class="btns-container">
+        <div class="btns-container ">
             <!-- <button class="start-btn" onclick="onInit()">start</button> -->
-            <button class="start-btn" onclick="onGameStart()">start</button>
+            <button class="start-btn pixel-corners pixel-corners--wrapper" onclick="onGameStart()">START</button>
         </div>
     </div>
     <canvas id="gameCanvas" width="400" height="600"></canvas>
