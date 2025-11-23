@@ -1,22 +1,19 @@
 'use strict'
-var bestScore
-
 
 function onInit() {
-      bestScore = (bestScore) ? bestScore : gameService.query()
       isGameOn = false
       isGameOver = false
       initKeys()
       initPointer()
       keysListener()
-
 }
+
 function onBackToStart() {
       isGameOver = false
-
       updateGameOverModal()
       updateStartModal()
 }
+
 function onGameStart() {
       const elFadeScreen = document.querySelector('.fade-screen');
       elFadeScreen.style.opacity = 1
@@ -45,18 +42,15 @@ function renderSummary() {
             elMedal.style.backgroundColor = 'gold'
       }
 
-
       let elCurrScore = document.querySelector('.curr-score')
       elCurrScore.innerText = currScore
       let elHighScore = document.querySelector('.high-score')
       elHighScore.innerText = bestScore
-
 }
 
 function onGameOver() {
       ground.currentAnimation.stop()
       isGameOver = true
-
 
       pipes.forEach(pipe => {
             pipe.dx = 0,
@@ -90,8 +84,6 @@ function keysListener() {
 
 const loop = GameLoop({
       update(dt) {
-            // updateStartModal()
-            // updateModal('start-modal')
             if (!isGameOn) return
             pipeTimer += dt
 
