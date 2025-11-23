@@ -1,5 +1,8 @@
 'use strict'
 
+let bestScore = gameService.query()
+
+
 function onInit() {
       isGameOn = false
       isGameOver = false

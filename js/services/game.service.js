@@ -1,7 +1,6 @@
 'use strict'
 const STORAGE_KEY = 'Flappy Bird Best Score'
 
-var bestScore = query()
 
 const gameService = {
   query,
@@ -12,7 +11,10 @@ const gameService = {
 
 function query() {
   const json = localStorage.getItem(STORAGE_KEY)
-  return json ? JSON.parse(json) : _save(STORAGE_KEY, 0)
+ if (!json) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(0))
+    return localStorage.getItem(STORAGE_KEY)
+  }
 }
 
 
