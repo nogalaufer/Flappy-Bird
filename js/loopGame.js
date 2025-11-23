@@ -38,7 +38,6 @@ function onGameStart() {
 
 function renderSummary() {
       const currScore = gScore / 2
-      console.log(bestScore)
       if (currScore > bestScore) {
             gameService.post(currScore)
             bestScore = currScore
