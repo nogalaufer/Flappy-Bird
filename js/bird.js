@@ -14,7 +14,7 @@ function restartBird() {
 const jump = throttle(() => {
   if (isKeyDown) return
   isKeyDown = true
-  bird.dy = -5.5;
+  bird.dy = -6;
 }, jumpDelay)
 
 function circleRectCollision(circle, rect) {

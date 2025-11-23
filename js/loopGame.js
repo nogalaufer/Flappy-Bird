@@ -9,7 +9,6 @@ function onInit() {
 }
 function onGameStart() {
       const elFadeScreen = document.querySelector('.fade-screen');
-      // if (elFadeScreen) {
       elFadeScreen.style.opacity = 1
 
       setTimeout(() => {
@@ -22,15 +21,7 @@ function onGameStart() {
             restartBird()
             ground.playAnimation('scroll')
       }, 150);
-      // }
-      // else {
-      //       isGameOn = true;
-      //       updateStartModal()
-      //       restartGround()
-      //       restartPipes()
-      //       restartBird()
-      //       ground.playAnimation('scroll')
-      // }
+  
 }
 
 function onGameOver() {
@@ -45,7 +36,7 @@ function onGameOver() {
             setTimeout(() => {
                   isGameOn = false
                   bird.isFalling = false
-            }, 200)
+            }, 2000)
       }
       return
 }
@@ -61,6 +52,7 @@ function keysListener() {
 const loop = GameLoop({
       update(dt) {
             updateStartModal()
+            console.log(isGameOn)
             if (!isGameOn) return
             pipeTimer += dt
 

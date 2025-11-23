@@ -1,0 +1,75 @@
+
+.start-modal {
+    display: grid;
+
+    position: absolute;
+    width: 400px;
+    height: 45vh;
+
+    .btns-container {
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        
+        button {
+            
+            cursor: pointer;
+            padding: 20px 40px;
+
+            font-family: "Jersey 10";
+            background: #00c8f8;
+            color: aliceblue;
+            font-size: 32px;
+            text-shadow:
+                2px 0 black,
+                -2px 0 black,
+                0 2px black,
+                0 -2px black,
+                2px 2px black,
+                2px -2px black,
+                -2px 2px black,
+                -2px -2px black;
+            
+            border: 3px solid black;
+            border-radius: 20px;
+
+            /* image-rendering: pixelated; */
+        }
+
+
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Jersey 10";
+        font-size: 1.5em;
+
+
+        animation: logo-up-down 1.5s ease-in-out infinite;
+
+        img {
+            margin-left: 1em;
+            /* height: 100%; */
+            width: 3em;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+ 
+@keyframes logo-up-down {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}

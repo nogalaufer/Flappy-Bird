@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+canvas {
+    display: block;
+    height: 90vh;
+    background: url('../imgs/backdrop2.png') center / cover no-repeat;
+}
+
+button {
+    all: unset;
+}
+

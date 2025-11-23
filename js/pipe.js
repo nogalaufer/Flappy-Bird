@@ -5,8 +5,8 @@ bottomPipeImg.src = './imgs/pipe.top.png'
 var topPipeImg = new Image()
 topPipeImg.src = './imgs/pipe.bottom.png'
 
-const PIPE_INTERVAL = 3.5;
-let pipeTimer = PIPE_INTERVAL - 0.5
+const PIPE_INTERVAL = 1.8;
+let pipeTimer = PIPE_INTERVAL - 1
 let pipes = []
 
 
@@ -19,6 +19,8 @@ function makePipes() {
     const BOTTOM_PIPE_MIN_Y = 420
     const TOP_PIPE_MAX_Y =  -490
     const PIPE_GAP = -190
+
+    const PIPES_SPEED= -2.5
 
     const randomHeight = Math.random() * (BOTTOM_PIPE_MAX_Y - BOTTOM_PIPE_MIN_Y)
 
@@ -33,7 +35,7 @@ function makePipes() {
         scaleX: 0.2,
         scaleY: 0.2,
 
-        dx: -1,
+        dx: PIPES_SPEED,
 
         update() {
             if (isGameOn) this.x += this.dx;
@@ -48,7 +50,7 @@ function makePipes() {
         scaleX: 0.2,
         scaleY: 0.2,
 
-        dx: -1,
+        dx: PIPES_SPEED,
 
         update() {
             this.x += this.dx;
