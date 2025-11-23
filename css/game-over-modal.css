@@ -15,14 +15,14 @@
         color: orange;
 
         text-shadow:
-            2px 0 #000,
+            2px 0 #000000,
             -2px 0 #000,
             0 2px #000,
             0 -2px #000,
-            2px 2px #000,
+            4px 2px #5d5959,
             2px -2px #000,
-            -2px 2px #000,
-            -2px -2px #000;
+            -2px 4px #ffffff,
+            -4px -2px #eeeeee;
 
     }
 
@@ -77,6 +77,10 @@
          
                 background: rgba(255, 255, 255, 0.05);
                 margin-right: 16px;
+
+                .number-one{
+                    display: flex;
+                }
 
             }
         }

@@ -37,15 +37,23 @@ function onGameStart() {
 }
 
 function renderSummary() {
+      const currScore = gScore / 2
+      if (currScore > bestScore) {
+            gameService.post(currScore)
+            bestScore = currScore
+            let elMedal = document.querySelector('.medal')
+            elMedal.style.backgroundColor = 'gold'
+      }
+
+
       let elCurrScore = document.querySelector('.curr-score')
-      elCurrScore.innerText = gScore / 2
+      elCurrScore.innerText = currScore
       let elHighScore = document.querySelector('.high-score')
       elHighScore.innerText = bestScore
 
 }
 
 function onGameOver() {
-      if (gScore > bestScore) gameService.post(gScore / 2)
       ground.currentAnimation.stop()
       isGameOver = true
 
