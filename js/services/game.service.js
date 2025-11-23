@@ -11,7 +11,7 @@ const STORAGE_KEY = 'Flappy Bird Best Score'
 
 function query() {
     const json = localStorage.getItem(STORAGE_KEY)
-    return json ? JSON.parse(json) : _save(STORAGE_KEY,0)
+    return json ? JSON.parse(json) : _save(STORAGE_KEY,'0')
 }
 
 
