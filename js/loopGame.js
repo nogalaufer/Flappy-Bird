@@ -1,7 +1,10 @@
 'use strict'
+var bestScore
 
 
 function onInit() {
+      bestScore = (bestScore) ? bestScore : gameService.query()
+      console.log(bestScore)
       isGameOn = false;
       initKeys()
       keysListener()
@@ -21,10 +24,11 @@ function onGameStart() {
             restartBird()
             ground.playAnimation('scroll')
       }, 150);
-  
+
 }
 
 function onGameOver() {
+      if (gScore > bestScore) gameService.post(gScore / 2)
       console.log('game over')
       ground.currentAnimation.stop()
       pipes.forEach(pipe => {

@@ -1,9 +1,9 @@
 'use strict'
 
 var bottomPipeImg = new Image()
-bottomPipeImg.src = './imgs/pipe.top.png'
+bottomPipeImg.src = '../imgs/pipe.top.png'
 var topPipeImg = new Image()
-topPipeImg.src = './imgs/pipe.bottom.png'
+topPipeImg.src = '../imgs/pipe.bottom.png'
 
 const PIPE_INTERVAL = 1.8;
 let pipeTimer = PIPE_INTERVAL - 1

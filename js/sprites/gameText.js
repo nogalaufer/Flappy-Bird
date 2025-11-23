@@ -16,6 +16,7 @@ let textScore = Text({
     update() {
         /* "/2" – because each pair of pipes counts as a single obstacle,
           and if we score each pipe separately, we need to divide by 2 */
+          // gScore= gScore/2
         this.text = gScore.toString() / 2
     }
 })
