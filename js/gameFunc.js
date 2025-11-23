@@ -1,5 +1,5 @@
 'use strict'
-const { init, GameLoop, Sprite, keyPressed, initKeys, collides, Text, SpriteSheet } = kontra;
+const { init, GameLoop, Sprite, keyPressed, initKeys,initPointer, collides, Text, SpriteSheet ,pointerPressed} = kontra;
 const { canvas } = init()
 
 let isKeyDown = false

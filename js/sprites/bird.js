@@ -56,7 +56,7 @@ const bird = Sprite({
   dy: 0,
 
   update() {
-    if (keyPressed('space') && !this.isFalling) {
+    if ((keyPressed('space') || pointerPressed('left')) && !this.isFalling) {
       jump()
     }
     if (circleRectCollision(this, ground)) onGameOver()

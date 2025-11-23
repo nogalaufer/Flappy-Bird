@@ -4,9 +4,9 @@ var bestScore
 
 function onInit() {
       bestScore = (bestScore) ? bestScore : gameService.query()
-      console.log(bestScore)
       isGameOn = false;
       initKeys()
+      initPointer()
       keysListener()
       updateStartModal()
 }
@@ -31,6 +31,7 @@ function onGameOver() {
       if (gScore > bestScore) gameService.post(gScore / 2)
       console.log('game over')
       ground.currentAnimation.stop()
+
       pipes.forEach(pipe => {
             pipe.dx = 0,
                   pipe.dy = 0
@@ -50,6 +51,12 @@ function keysListener() {
             if (e.code === 'Space') {
                   isKeyDown = false
             }
+      })
+      window.addEventListener('mouseup', () => {
+            isKeyDown = false
+      })
+      window.addEventListener('touchend', () => {
+            isKeyDown = false
       })
 }
 
