@@ -4,10 +4,17 @@ var bestScore
 
 function onInit() {
       bestScore = (bestScore) ? bestScore : gameService.query()
-      isGameOn = false;
+      isGameOn = false
+      isGameOver = false
       initKeys()
       initPointer()
       keysListener()
+
+}
+function onBackToStart() {
+      isGameOver = false
+
+      updateGameOverModal()
       updateStartModal()
 }
 function onGameStart() {
@@ -17,8 +24,10 @@ function onGameStart() {
       setTimeout(() => {
             elFadeScreen.style.opacity = 0
             isGameOn = true
+
             gScore = 0
             updateStartModal()
+
             restartGround()
             restartPipes()
             restartBird()
@@ -27,21 +36,32 @@ function onGameStart() {
 
 }
 
+function renderSummary() {
+      let elCurrScore = document.querySelector('.curr-score')
+      elCurrScore.innerText = gScore / 2
+      let elHighScore = document.querySelector('.high-score')
+      elHighScore.innerText = bestScore
+
+}
+
 function onGameOver() {
       if (gScore > bestScore) gameService.post(gScore / 2)
-      console.log('game over')
       ground.currentAnimation.stop()
+      isGameOver = true
+
 
       pipes.forEach(pipe => {
             pipe.dx = 0,
                   pipe.dy = 0
       })
 
-      if (bird.y = ground.y) {
+      if (bird.y >= ground.y) {
             setTimeout(() => {
+                  updateGameOverModal()
+                  renderSummary()
                   isGameOn = false
                   bird.isFalling = false
-            }, 2000)
+            }, 500)
       }
       return
 }
@@ -62,8 +82,8 @@ function keysListener() {
 
 const loop = GameLoop({
       update(dt) {
-            updateStartModal()
-            console.log(isGameOn)
+            // updateStartModal()
+            // updateModal('start-modal')
             if (!isGameOn) return
             pipeTimer += dt
 

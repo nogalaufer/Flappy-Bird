@@ -2,7 +2,7 @@
     display: grid;
 
     position: absolute;
-    width: 400px;
+    width: 100%;
     height: 45vh;
 
     .btns-container {
@@ -12,26 +12,7 @@
         align-items: flex-end;
 
         button {
-            cursor: pointer;
-            padding: 20px 40px;
-
-            font-family: "Jersey 10";
-            background: #00c8f8;
-            color: aliceblue;
-            font-size: 32px;
-            letter-spacing: 4px;
-            text-shadow:
-                2px 0 black,
-                -2px 0 black,
-                0 2px black,
-                0 -2px black,
-                2px 2px black,
-                2px -2px black,
-                -2px 2px black,
-                -2px -2px black;
-
-            border: 3px solid black;
-            border-radius: 12px;
+             background: #00c8f8;
             box-shadow:
                 inset 0 0 0 3px #0000006b,
                 0 3px 0 #004f58;
@@ -53,7 +34,6 @@
 
         img {
             margin-left: 1em;
-            /* height: 100%; */
             width: 3em;
         }
         .flappy-logo {
