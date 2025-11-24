@@ -14,52 +14,55 @@
 
 <body onload="onInit()">
     <div class="fade-screen"></div>
+    <div class="game-wrapper">
 
-    <div class="start-modal">
-        <div class="logo-container">
-            <h1 class="flappy-logo">
-                <span>F</span>
-                <span>L</span>
-                <span>A</span>
-                <span>P</span>
-                <span>P</span>
-                <span>Y</span>
-                <span>B</span>
-                <span>I</span>
-                <span>R</span>
-                <span>D</span>
-            </h1>
-            <img src="./imgs/birdUp.png">
+        <div class="start-modal">
+            <div class="logo-container">
+                <h1 class="flappy-logo">
+                    <span>F</span>
+                    <span>L</span>
+                    <span>A</span>
+                    <span>P</span>
+                    <span>P</span>
+                    <span>Y</span>
+                    <span>B</span>
+                    <span>I</span>
+                    <span>R</span>
+                    <span>D</span>
+                </h1>
+                <img src="./imgs/birdUp.png">
+            </div>
+            <div class="btns-container ">
+                <button class="start-btn pixel-corners pixel-corners--wrapper" onclick="onGameStart()">START</button>
+            </div>
         </div>
-        <div class="btns-container ">
-            <button class="start-btn pixel-corners pixel-corners--wrapper" onclick="onGameStart()">START</button>
-        </div>
-    </div>
 
-    <div class="game-over-modal hidden">
-        <h1 class="title"> GAME OVER</h1>
-        <div class="summary-box">
-            <div class="medal-container">
-                <h1>MEDAL</h1>
-                <div class="medal"> 
-                    <!-- <div class="number-one">1</div> -->
+        <div class="game-over-modal hidden">
+            <h1 class="title"> GAME OVER</h1>
+            <div class="summary-box">
+                <div class="medal-container">
+                    <h1>MEDAL</h1>
+                    <div class="medal">
+                        <!-- <div class="number-one">1</div> -->
+                    </div>
+                </div>
+                <div class="summary-container">
+                    <h1>SCORE</h1>
+                    <p class="curr-score"></p>
+                    <h1>HIGH SCORE</h1>
+                    <p class="high-score"></p>
+
                 </div>
             </div>
-            <div class="summary-container">
-                <h1>SCORE</h1>
-                <p class="curr-score"></p>
-                <h1>HIGH SCORE</h1>
-                <p class="high-score"></p>
-
+            <div class="btns-container">
+                <button class="pixel-corners pixel-corners--wrapper" onclick="onBackToStart()">PLAY</button>
             </div>
-        </div>
-        <div class="btns-container">
-            <button class="pixel-corners pixel-corners--wrapper" onclick="onBackToStart()">PLAY</button>
+
         </div>
 
+        <canvas id="gameCanvas" width="400" height="600">
+        </canvas>
     </div>
-
-    <canvas id="gameCanvas" width="400" height="600"></canvas>
     <!-- <script src="./node_modules/kontra/kontra.min.js"></script> -->
     <script src="https://unpkg.com/kontra@latest/kontra.min.js"></script>
 

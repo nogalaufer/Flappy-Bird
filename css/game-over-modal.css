@@ -1,14 +1,5 @@
 .game-over-modal {
-    display: grid;
-
-    position: absolute;
-    width: 400px;
-    height: 45vh;
-    justify-content: center;
-    justify-items: center;
-
     letter-spacing: 3px;
-
 
     .title {
         font-size: 4rem;
@@ -54,7 +45,7 @@
 
         .summary-container {
             justify-items: end;
-
+            
             p{
                 font-size:2em ;
                 color: rgb(255, 255, 255);
@@ -72,30 +63,33 @@
                 height: 100px;
                 background-color: aqua;
                 border-radius: 50%;
-
+                
                 border: 2px solid #9ed58a;
-         
+                
                 background: rgba(255, 255, 255, 0.05);
                 margin-right: 16px;
-
+                
                 .number-one{
                     display: flex;
                 }
-
+                
             }
         }
-
+        
     }
-
+    
     button {
         margin-top: 1em;
         background: #1db815;
         box-shadow:
-            inset 0 0 0 3px #0000006b,
-            0 3px 0 #9eb2b5;
+        inset 0 0 0 3px #0000006b,
+        0 3px 0 #9eb2b5;
     }
 }
 
 .hidden {
     display: none;
+}
+.gold{
+    background-color: gold;
 }

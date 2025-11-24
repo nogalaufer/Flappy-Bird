@@ -41,7 +41,8 @@ button {
     font-family: "Jersey 10";
 
     color: aliceblue;
-    font-size: 32px;
+    /* font-size: 32px; */
+    font-size: 2em;
     letter-spacing: 4px;
     text-shadow:
         2px 0 black,

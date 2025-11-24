@@ -41,10 +41,11 @@ function renderSummary() {
       if (currScore > bestScore) {
             gameService.post(currScore)
             bestScore = currScore
+            // elMedal.style.backgroundColor = 'gold'
             let elMedal = document.querySelector('.medal')
-            elMedal.style.backgroundColor = 'gold'
+            elMedal.classList.add('gold')
       }
-
+      
       let elCurrScore = document.querySelector('.curr-score')
       elCurrScore.innerText = currScore
       let elHighScore = document.querySelector('.high-score')
