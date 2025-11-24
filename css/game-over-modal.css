@@ -4,7 +4,6 @@
     .title {
         font-size: 4rem;
         color: orange;
-
         text-shadow:
             2px 0 #000000,
             -2px 0 #000,
@@ -18,7 +17,7 @@
     }
 
     .summary-box {
-        width: 400px;
+        /* width: 400px; */
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-content: center;
