@@ -1,6 +1,5 @@
 'use strict'
 let groundImg = new Image();
-// groundImg.src = './imgs/ground.frames3.png';
 groundImg.src = './imgs/ground.frames3.png';
 
 function restartGround() {
@@ -12,17 +11,13 @@ function restartGround() {
 
 const groundAmination = SpriteSheet({
     image: groundImg,
-    // frameWidth: 566,
     frameWidth: 566,
-    // frameHeight: 157,
     frameHeight: 163,
-    // frameHeight: groundImg.height/4,
 
 
     animations: {
         scroll: {
             frames: [0, 1, 2],
-            // frames: "3",
             frameRate: 14,
         }
     }
@@ -30,8 +25,7 @@ const groundAmination = SpriteSheet({
 
 const ground = Sprite({
   x: 0,
-  // y: 484,
-  y: 487,
+  y: 484,
   scaleX: canvas.width / 566,
   scaleY: 0.8,
   animations: groundAmination.animations,
