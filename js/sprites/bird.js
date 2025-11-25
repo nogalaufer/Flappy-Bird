@@ -52,7 +52,7 @@ const bird = Sprite({
     this.x = canvas.width / 3,
       this.y = canvas.height / 3
     this.dy = 0
-    this.rotation =0
+    this.rotation = 0
   },
   update() {
     if ((keyPressed('space') || pointerPressed('left')) && !this.isFalling) {
@@ -60,14 +60,17 @@ const bird = Sprite({
     }
     if (circleRectCollision(this, ground)) {
       this.isFalling = true
+      this.y = ground.y;
+      this.dy = 0;
       onGameOver()
     }
 
     pipes.forEach(pipe => {
-      if (!pipe.scored && pipe.x - this.x < 0) {
+      const pipeWidth = pipe.width * (pipe.scaleX || 1)
+      const pipeRight = pipe.x + pipeWidth
+      if (!pipe.scored && pipeRight < this.x) {
         pipe.scored = true
         gScore++
-
       }
       if (circleRectCollision(this, pipe)) {
         this.isFalling = true
@@ -78,11 +81,8 @@ const bird = Sprite({
           this.y = ground.y;
           this.dy = 0;
           onGameOver()
-          this.rotation = Math.atan2(0.3, 11);
         }
-
       }
-
     })
 
     /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
@@ -95,4 +95,5 @@ const bird = Sprite({
     // }
   }
 });
+
 
