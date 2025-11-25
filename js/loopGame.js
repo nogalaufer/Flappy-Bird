@@ -1,6 +1,5 @@
 'use strict'
 
-let bestScore = gameService.query() || 0
 
 
 function onInit() {
@@ -12,6 +11,7 @@ function onInit() {
 }
 
 function onBackToStart() {
+      context.clearRect(0, 0, canvas.width, canvas.height)
       isGameOver = false
       updateGameOverModal()
       updateStartModal()
@@ -20,71 +20,63 @@ function onBackToStart() {
 function onGameStart() {
       const elFadeScreen = document.querySelector('.fade-screen');
       elFadeScreen.style.opacity = 1
-
       setTimeout(() => {
             elFadeScreen.style.opacity = 0
+            // reset all
             isGameOn = true
-
             gScore = 0
             updateStartModal()
-
-            restartGround()
+            ground.reset()
             restartPipes()
-            restartBird()
+            bird.reset()
+            loop.start()
             ground.playAnimation('scroll')
       }, 150);
 
 }
 
 function renderSummary() {
+      // in game-over modal
+      const COUNT_UP_DURATION=400
       const currScore = gScore / 2
-      if (currScore > bestScore) {
-            gameService.post(currScore)
-            bestScore = currScore
-            // elMedal.style.backgroundColor = 'gold'
-            let elMedal = document.querySelector('.medal')
-            elMedal.classList.add('gold')
-      }
-      
-      let elCurrScore = document.querySelector('.curr-score')
-      elCurrScore.innerText = currScore
       let elHighScore = document.querySelector('.high-score')
       elHighScore.innerText = bestScore
+
+      let elCurrScore = document.querySelector('.curr-score')
+      countUp(elCurrScore, currScore, COUNT_UP_DURATION)
+
+      if (currScore > bestScore) {
+            bestScore = currScore
+            gameService.post(currScore)
+            setTimeout(() => {
+                  document.querySelector('.number-one').style.display = 'flex'
+                  document.querySelector('.medal').style.backgroundColor = 'gold'
+                  document.querySelector('.new-score').style.opacity = 1
+                  elHighScore.innerText = bestScore
+            }
+                  , COUNT_UP_DURATION)
+      } else {
+            document.querySelector('.medal').style.backgroundColor = ''
+            document.querySelector('.new-score').style.opacity = 0
+            document.querySelector('.number-one').style.display = 'none'
+      }
+
+
 }
 
 function onGameOver() {
-      ground.currentAnimation.stop()
+      loop.stop()
       isGameOver = true
+      setTimeout(() => {
+            updateGameOverModal()
+            renderSummary()
+            isGameOn = false
+            bird.isFalling = false
+      }, 500)
 
-      pipes.forEach(pipe => {
-            pipe.dx = 0,
-                  pipe.dy = 0
-      })
-
-      if (bird.y >= ground.y) {
-            setTimeout(() => {
-                  updateGameOverModal()
-                  renderSummary()
-                  isGameOn = false
-                  bird.isFalling = false
-            }, 500)
-      }
       return
 }
 
-function keysListener() {
-      window.addEventListener('keyup', e => {
-            if (e.code === 'Space') {
-                  isKeyDown = false
-            }
-      })
-      window.addEventListener('mouseup', () => {
-            isKeyDown = false
-      })
-      window.addEventListener('touchend', () => {
-            isKeyDown = false
-      })
-}
 
 const loop = GameLoop({
       update(dt) {
@@ -102,6 +94,7 @@ const loop = GameLoop({
 
       },
       render: () => {
+
             if (!isGameOn) return
             pipes.forEach(pipe => pipe.render())
             ground.render()

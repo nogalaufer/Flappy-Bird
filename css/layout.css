@@ -4,7 +4,7 @@
     /* grid-template-columns: 20px 1fr 20px; */
     width: 457px;
     height: 600px;
-justify-self: center;
+    justify-self: center;
     /* margin: 0 auto; */
     /* margin:auto; */
     display: flex;
@@ -16,11 +16,11 @@ justify-self: center;
 .start-modal,
 .game-over-modal {
     display: grid;
-/* grid-column: 2; */
+    /* grid-column: 2; */
     min-width: 230px;
+    width: 90%;
     height: 50vh;
-margin-left: 5px;
-margin-right: 5px;
+   padding: 8px;
     position: absolute;
     top: 35%;
     left: 50%;

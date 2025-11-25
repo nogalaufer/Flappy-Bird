@@ -1,12 +1,14 @@
 'use strict'
 const { init, GameLoop, Sprite, keyPressed, initKeys, initPointer, collides, Text, SpriteSheet, pointerPressed } = kontra;
-const { canvas } = init()
+const { canvas,context  } = init()
 
+let bestScore = gameService.query()
 let isKeyDown = false
 const jumpDelay = 150
 let isGameOn = false
 let isGameOver = false
 let gScore = 0
+
 
 function updateStartModal() {
     const elModal = document.querySelector('.start-modal')
@@ -18,11 +20,16 @@ function updateGameOverModal() {
   elModal.classList.toggle('hidden', !isGameOver)
 }
 
-// function keysListener() {
-//     window.addEventListener('keyup', e => {
-//         if (e.code === 'Space') {
-//             isKeyDown = false
-//         }
-//     })
-// }
-
+function keysListener() {
+      window.addEventListener('keyup', e => {
+            if (e.code === 'Space') {
+                  isKeyDown = false
+            }
+      })
+      window.addEventListener('mouseup', () => {
+            isKeyDown = false
+      })
+      window.addEventListener('touchend', () => {
+            isKeyDown = false
+      })
+}

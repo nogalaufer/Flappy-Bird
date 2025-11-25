@@ -13,8 +13,10 @@ function query() {
   const json = localStorage.getItem(STORAGE_KEY)
  if (!json) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(0))
-    return localStorage.getItem(STORAGE_KEY)
+    return 0
   }
+  return JSON.parse(json)
+
 }
 
 

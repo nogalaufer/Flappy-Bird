@@ -24,10 +24,18 @@ const groundAmination = SpriteSheet({
 })
 
 const ground = Sprite({
-    x: 0,
-    y: 484,
-    scaleX: canvas.width / 566,
-    scaleY: 0.8,
-    animations: groundAmination.animations
+  x: 0,
+  y: 484,
+  scaleX: canvas.width / 566,
+  scaleY: 0.8,
+  animations: groundAmination.animations,
+
+  reset() {
+    if (this.currentAnimation) {
+      this.currentAnimation.reset()
+    }
+
+    this.playAnimation('scroll')
+  }
 })
 

@@ -4,13 +4,6 @@ var birdImg = new Image();
 birdImg.src = './imgs/birdUp.png'
 
 
-function restartBird() {
-  bird.x = canvas.width / 3;
-  bird.y = canvas.height / 3;
-  bird.dy = 0;
-  bird.rotation = 0;
-}
-
 const jump = throttle(() => {
   if (isKeyDown) return
   isKeyDown = true
@@ -55,11 +48,20 @@ const bird = Sprite({
 
   dy: 0,
 
+  reset() {
+    this.x = canvas.width / 3,
+      this.y = canvas.height / 3
+    this.dy = 0
+    this.rotation =0
+  },
   update() {
     if ((keyPressed('space') || pointerPressed('left')) && !this.isFalling) {
       jump()
     }
-    if (circleRectCollision(this, ground)) onGameOver()
+    if (circleRectCollision(this, ground)) {
+      this.isFalling = true
+      onGameOver()
+    }
 
     pipes.forEach(pipe => {
       if (!pipe.scored && pipe.x - this.x < 0) {
@@ -71,19 +73,13 @@ const bird = Sprite({
         this.isFalling = true
       }
       if (this.isFalling) {
-        //  this.dy = 0
-        // setTimeout(()=>{
-          this.dy += 0.2;
-          if (this.y >= ground.y) {
-            this.y = ground.y;
-            this.dy = 0;
-            onGameOver()
-            this.rotation = Math.atan2(0.3, 11);
-          }
-          
-
-        // },300)
-          
+        this.dy += 0.2;
+        if (this.y >= ground.y) {
+          this.y = ground.y;
+          this.dy = 0;
+          onGameOver()
+          this.rotation = Math.atan2(0.3, 11);
+        }
 
       }
 
@@ -92,9 +88,9 @@ const bird = Sprite({
     /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
     dy<0 (the bird is moving upward) → the angle is negative → the bird tilts upward.*/
     // if (!this.isFalling){
-      this.rotation = Math.atan2(this.dy, 11);
-      this.dy += 0.3;
-      this.y += this.dy;
+    this.rotation = Math.atan2(this.dy, 11);
+    this.dy += 0.3;
+    this.y += this.dy;
 
     // }
   }

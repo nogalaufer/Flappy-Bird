@@ -12,15 +12,15 @@ let pipes = []
 
 function restartPipes() {
     pipes.length = 0
-} 
+}
 
 function makePipes() {
     const BOTTOM_PIPE_MAX_Y = 200
     const BOTTOM_PIPE_MIN_Y = 420
-    const TOP_PIPE_MAX_Y =  -490
+    const TOP_PIPE_MAX_Y = -490
     const PIPE_GAP = -190
 
-    const PIPES_SPEED= -2.5
+    const PIPES_SPEED = -2.5
 
     const randomHeight = Math.random() * (BOTTOM_PIPE_MAX_Y - BOTTOM_PIPE_MIN_Y)
 
@@ -36,7 +36,7 @@ function makePipes() {
         scaleY: 0.2,
 
         dx: PIPES_SPEED,
-
+       
         update() {
             if (isGameOn) this.x += this.dx;
         }
