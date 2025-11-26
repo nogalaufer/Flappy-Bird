@@ -25,19 +25,19 @@ const tapAndPointer = Sprite({
 
     update() {
         if (isGetReadyOn && (keyPressed('space') || pointerPressed('left'))) {
-            this.isFading = true;
+            this.isFading = true
+            bird.isFalling = false
+            hasStarted = true
+            jump()
 
         }
         if (this.isFading) {
-
             this.opacity -= 0.05
-
             if (this.opacity <= 0) {
                 this.opacity = 0;
                 this.isFading = false;
                 this.ttl = 0;
                 isGetReadyOn = false
-
             }
         }
 

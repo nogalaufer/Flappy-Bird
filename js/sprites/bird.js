@@ -2,12 +2,21 @@
 
 var birdImg = new Image();
 birdImg.src = './imgs/birdUp.png'
+const flapSound = loadSound('./sounds/simple-whoosh-382724.mp3');
+const scoreSound = loadSound('./sounds/game-bonus-02-294436.mp3');
+
+// const collisions = new Audio('./sounds/try/classic-punch-impact-352711.mp3');
+// const collisions = new Audio('./sounds/try/impact-thud-372473.mp3');
+const collisions = new Audio('./sounds/thud-291047.mp3');
 
 
 const jump = throttle(() => {
   if (isKeyDown) return
   isKeyDown = true
   bird.dy = -6;
+  if (isSoundOn) {
+    playSound(flapSound);
+  }
 }, jumpDelay)
 
 function circleRectCollision(circle, rect) {
@@ -53,12 +62,19 @@ const bird = Sprite({
       this.y = canvas.height / 3
     this.dy = 0
     this.rotation = 0
+    // this.isFalling = false
   },
   update() {
-    if ((keyPressed('space') || pointerPressed('left')) && !this.isFalling && !isGetReadyOn) {
+    if ((keyPressed('space') || pointerPressed('left')) && (!this.isFalling || !isGetReadyOn)) {
       jump()
     }
+
+
     if (circleRectCollision(this, ground)) {
+      if (isSoundOn) {
+        collisions.play()
+      }
+
       this.isFalling = true
       this.y = ground.y;
       this.dy = 0;
@@ -69,22 +85,27 @@ const bird = Sprite({
       const pipeWidth = pipe.width * (pipe.scaleX || 1)
       const pipeRight = pipe.x + pipeWidth
       if (!pipe.scored && pipeRight < this.x) {
+        playSound(scoreSound)
         pipe.scored = true
         gScore++
       }
       if (circleRectCollision(this, pipe)) {
         this.isFalling = true
+        if (isSoundOn) {
+          // collisions.playbackRate = 1.5
+          collisions.play()
+        }
       }
       if (this.isFalling) {
-        this.dy += 0.2;
+        this.dy += 0.2
         if (this.y >= ground.y) {
-          this.y = ground.y;
-          this.dy = 0;
+          this.y = ground.y
+          this.dy = 0
           onGameOver()
         }
       }
     })
-    if (isGetReadyOn) return
+if (!hasStarted) return
     /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
     dy<0 (the bird is moving upward) → the angle is negative → the bird tilts upward.*/
     // if (!this.isFalling){
