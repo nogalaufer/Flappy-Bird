@@ -7,6 +7,7 @@ let isKeyDown = false
 const jumpDelay = 150
 let isGameOn = false
 let isGameOver = false
+let isGetReadyOn = false
 let gScore = 0
 
 

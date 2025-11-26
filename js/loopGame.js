@@ -5,6 +5,8 @@
 function onInit() {
       isGameOn = false
       isGameOver = false
+      isGetReadyOn = false
+
       initKeys()
       initPointer()
       keysListener()
@@ -24,20 +26,23 @@ function onGameStart() {
             elFadeScreen.style.opacity = 0
             // reset all
             isGameOn = true
+            isGetReadyOn = true
             gScore = 0
             updateStartModal()
             ground.reset()
+            tapAndPointer.reset()
             restartPipes()
             bird.reset()
             loop.start()
             ground.playAnimation('scroll')
       }, 150);
-
 }
+
+
 
 function renderSummary() {
       // in game-over modal
-      const COUNT_UP_DURATION=400
+      const COUNT_UP_DURATION = 400
       const currScore = gScore / 2
       let elHighScore = document.querySelector('.high-score')
       elHighScore.innerText = bestScore
@@ -80,26 +85,41 @@ function onGameOver() {
 
 const loop = GameLoop({
       update(dt) {
-            if (!isGameOn) return
-            pipeTimer += dt
-
-            if (pipeTimer >= PIPE_INTERVAL) {
-                  makePipes()
-                  pipeTimer = 0
+            if (isGameOn & isGetReadyOn ) {
+                  tapAndPointer.update()
+                  bird.update()
             }
-            pipes.forEach(pipe => pipe.update())
-            ground.update()
-            bird.update()
-            textScore.update()
+            if (!isGameOn & !isGetReadyOn) return
 
+            if (isGameOn & !isGetReadyOn ) {
+
+
+                  pipeTimer += dt
+
+                  if (pipeTimer >= PIPE_INTERVAL) {
+                        makePipes()
+                        pipeTimer = 0
+                  }
+                  pipes.forEach(pipe => pipe.update())
+                  ground.update()
+                  bird.update()
+                  textScore.update()
+            }
       },
       render: () => {
 
-            if (!isGameOn) return
-            pipes.forEach(pipe => pipe.render())
-            ground.render()
-            textScore.render()
-            bird.render()
+            if (isGameOn & isGetReadyOn) {
+                  tapAndPointer.render()
+                     bird.render()
+            }
+            if (!isGameOn & isGetReadyOn) return
+
+            if (isGameOn & !isGetReadyOn) {
+                  pipes.forEach(pipe => pipe.render())
+                  ground.render()
+                  bird.render()
+                  textScore.render()
+            }
       }
 });
 

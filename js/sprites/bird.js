@@ -55,7 +55,7 @@ const bird = Sprite({
     this.rotation = 0
   },
   update() {
-    if ((keyPressed('space') || pointerPressed('left')) && !this.isFalling) {
+    if ((keyPressed('space') || pointerPressed('left')) && !this.isFalling && !isGetReadyOn) {
       jump()
     }
     if (circleRectCollision(this, ground)) {
@@ -84,7 +84,7 @@ const bird = Sprite({
         }
       }
     })
-
+    if (isGetReadyOn) return
     /*rotation: dy>0 (the bird is falling fast) → the angle returned by Math.atan2() is positive → the bird tilts downward.
     dy<0 (the bird is moving upward) → the angle is negative → the bird tilts upward.*/
     // if (!this.isFalling){
@@ -95,5 +95,4 @@ const bird = Sprite({
     // }
   }
 });
-
 
