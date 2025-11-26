@@ -65,7 +65,7 @@ const bird = Sprite({
     // this.isFalling = false
   },
   update() {
-    if ((keyPressed('space') || pointerPressed('left')) && (!this.isFalling || !isGetReadyOn)) {
+    if ((keyPressed('space') || pointerPressed('left')) && !this.isFalling && !isGetReadyOn) {
       jump()
     }
 
@@ -85,7 +85,7 @@ const bird = Sprite({
       const pipeWidth = pipe.width * (pipe.scaleX || 1)
       const pipeRight = pipe.x + pipeWidth
       if (!pipe.scored && pipeRight < this.x) {
-        playSound(scoreSound)
+      if (isSoundOn) playSound(scoreSound)
         pipe.scored = true
         gScore++
       }
