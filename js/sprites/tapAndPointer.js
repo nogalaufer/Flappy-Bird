@@ -6,7 +6,7 @@ tapAndPointerImg.src = './imgs/tapAndPointer1.png'
 
 const tapAndPointer = Sprite({
     x: canvas.width / 1.7,
-    y: canvas.height / 2,
+    y: canvas.height / 2.2,
 
     image: tapAndPointerImg,
     scaleX: 0.1,
