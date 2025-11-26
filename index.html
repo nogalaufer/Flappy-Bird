@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./imgs/birdUp.png">
+    
     <title>FlappyBird</title>
-    <!-- !!!! -->
 </head>
 
 
 <body onload="onInit()">
     <div class="fade-screen"></div>
     <div class="game-wrapper">
-    
+        <button onclick="onToggleVolume()" class="volume-btn fa-solid"></button>
         <div class="start-modal">
             <div class="logo-container">
                 <h1 class="flappy-logo">
@@ -54,19 +55,19 @@
                         <h1>HIGH SCORE</h1>
                     </div>
                     <p class="high-score"></p>
-
+                    
                 </div>
             </div>
             <div class="btns-container">
                 <button class="pixel-corners pixel-corners--wrapper" onclick="onBackToStart()">PLAY</button>
             </div>
-
+            
         </div>
-
         <canvas id="gameCanvas" width="400" height="600">
         </canvas>
+        
     </div>
-    <!-- <script src="./node_modules/kontra/kontra.min.js"></script> -->
+    
     <script src="https://unpkg.com/kontra@latest/kontra.min.js"></script>
 
     <script src="js/services/util.js"> </script>

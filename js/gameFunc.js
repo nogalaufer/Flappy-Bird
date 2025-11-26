@@ -2,6 +2,8 @@
 const { init, GameLoop, Sprite, keyPressed, initKeys, initPointer, collides, Text, SpriteSheet, pointerPressed } = kontra;
 const { canvas, context } = init()
 
+const toggleSound = loadSound('./sounds/computer-mouse-click-352734.mp3');
+
 let bestScore = gameService.query()
 let isKeyDown = false
 const jumpDelay = 150
@@ -12,10 +14,24 @@ let gScore = 0
 let isSoundOn = true
 let hasStarted = false
 
+function onToggleVolume() {
+      isSoundOn = !isSoundOn
+      setSoundPref(isSoundOn)
+      if (isSoundOn) playSound(toggleSound)
+      setVolumeIcon()
+}
+
+function setVolumeIcon() {
+      document.querySelector('.volume-btn').classList.toggle('fa-volume-high', isSoundOn)
+      document.querySelector('.volume-btn').classList.toggle('fa-volume-xmark', !isSoundOn)
+
+}
 
 function updateStartModal() {
       const elModal = document.querySelector('.start-modal')
       elModal.classList.toggle('hidden', isGameOn)
+      if (!isGameOn) document.querySelector('.volume-btn').style.display = 'block'
+
 }
 
 function updateGameOverModal() {

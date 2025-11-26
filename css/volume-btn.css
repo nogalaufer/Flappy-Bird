@@ -1,0 +1,16 @@
+    .volume-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        color:#b4e1f6;
+
+        padding: 0px;
+        border: none;
+
+
+       
+    }
+    .volume-btn:active {
+              transform: translateY(0px);
+    }

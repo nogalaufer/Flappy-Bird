@@ -5,8 +5,8 @@ bottomPipeImg.src = './imgs/pipe.top.png'
 var topPipeImg = new Image()
 topPipeImg.src = './imgs/pipe.bottom.png'
 
-const PIPE_INTERVAL = 1.8;
-let pipeTimer = PIPE_INTERVAL - 1
+const PIPE_INTERVAL = 1.8
+let pipeTimer = 1.5
 let pipes = []
 
 

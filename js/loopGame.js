@@ -6,6 +6,8 @@ function onInit() {
       isGameOn = false
       isGameOver = false
       isGetReadyOn = false
+      isSoundOn = getSoundPref()
+      setVolumeIcon()
 
       initKeys()
       initPointer()
@@ -30,6 +32,8 @@ function onGameStart() {
       let elFadeScreen = document.querySelector('.fade-screen');
       elFadeScreen.style.opacity = 1
       setTimeout(() => {
+            document.querySelector('.volume-btn').style.display = 'none'
+
             elFadeScreen.style.opacity = 0
             // reset all
             isGameOn = true
