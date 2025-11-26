@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     
-
 }
 
 .start-modal,
@@ -15,7 +14,7 @@
     top: 50%;
     left: 50%;
     min-width: 230px;
-    width: 85dvw;
+    /* width: 70dvw; */
     height: 50vh;
     padding: 8px;
     transform: translate(-50%, -50%);
