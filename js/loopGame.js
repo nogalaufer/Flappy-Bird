@@ -96,6 +96,7 @@ const loop = GameLoop({
 
             if (isGetReadyOn) {
                   tapAndPointer.update()
+                      ground.update() 
                   bird.update()
                   return
             }
@@ -104,7 +105,7 @@ const loop = GameLoop({
                   pipeTimer += dt
 
                   if (pipeTimer >= PIPE_INTERVAL) {
-                        makePipes();
+                        makePipes()
                         pipeTimer = 0
                   }
 
@@ -123,7 +124,6 @@ const loop = GameLoop({
                   tapAndPointer.render()
                   textScore.render()
                   ground.render()
-
                   bird.render()
                   return
             }
