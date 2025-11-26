@@ -78,8 +78,6 @@ function onGameOver() {
             isGameOn = false
             bird.isFalling = false
       }, 500)
-
-      return
 }
 
 
@@ -91,20 +89,18 @@ const loop = GameLoop({
             }
             if (!isGameOn & !isGetReadyOn) return
 
-            if (isGameOn & !isGetReadyOn ) {
-
-
+            if (isGameOn & !isGetReadyOn & !bird.isFalling ) {
                   pipeTimer += dt
 
-                  if (pipeTimer >= PIPE_INTERVAL) {
+                  if (pipeTimer >= PIPE_INTERVAL ) {
                         makePipes()
                         pipeTimer = 0
                   }
                   pipes.forEach(pipe => pipe.update())
                   ground.update()
-                  bird.update()
                   textScore.update()
             }
+            bird.update()
       },
       render: () => {
 
