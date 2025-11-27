@@ -36,9 +36,9 @@ function onGameStart() {
 
             elFadeScreen.style.opacity = 0
             // reset all
+            gScore = 0
             isGameOn = true
             isGetReadyOn = true
-            gScore = 0
             updateStartModal()
             ground.reset()
             tapAndPointer.reset()
@@ -96,7 +96,8 @@ const loop = GameLoop({
 
             if (isGetReadyOn) {
                   tapAndPointer.update()
-                      ground.update() 
+                  ground.update()
+                  textScore.update()
                   bird.update()
                   return
             }
