@@ -6,7 +6,7 @@ var topPipeImg = new Image()
 topPipeImg.src = './imgs/pipe.bottom.png'
 
 const PIPE_INTERVAL = 1.8
-let pipeTimer = 1.5
+let pipeTimer = 1.7
 let pipes = []
 
 

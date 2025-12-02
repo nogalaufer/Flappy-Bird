@@ -92,6 +92,7 @@ function onGameOver() {
 
 const loop = GameLoop({
       update(dt) {
+            // ground.update()
             if (!isGameOn) return
 
             if (isGetReadyOn) {
@@ -119,6 +120,7 @@ const loop = GameLoop({
       },
 
       render() {
+              ground.render()
             if (!isGameOn) return;
 
             if (isGetReadyOn) {
